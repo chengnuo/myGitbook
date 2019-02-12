@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>千位分隔符的完整攻略 · GitBook</title>
+        <title>JavaScript 异步编程 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="asynchronousProgramming.html" />
     
-    
-    <link rel="prev" href="../part2/README.md" />
+    <link rel="prev" href="miliFormat.html" />
     
 
     </head>
@@ -379,7 +377,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.9.1" data-path="miliFormat.html">
+        <li class="chapter " data-level="1.9.1" data-path="miliFormat.html">
             
                 <a href="miliFormat.html">
             
@@ -392,7 +390,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2" data-path="asynchronousProgramming.html">
+        <li class="chapter active" data-level="1.9.2" data-path="asynchronousProgramming.html">
             
                 <a href="asynchronousProgramming.html">
             
@@ -440,7 +438,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >千位分隔符的完整攻略</a>
+        <a href=".." >JavaScript 异步编程</a>
     </h1>
 </div>
 
@@ -455,25 +453,73 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5343;&#x4F4D;&#x5206;&#x9694;&#x7B26;&#x7684;&#x5B8C;&#x6574;&#x653B;&#x7565;">&#x5343;&#x4F4D;&#x5206;&#x9694;&#x7B26;&#x7684;&#x5B8C;&#x6574;&#x653B;&#x7565;</h1>
+                                <h1 id="javascript-&#x5F02;&#x6B65;&#x7F16;&#x7A0B;">JavaScript &#x5F02;&#x6B65;&#x7F16;&#x7A0B;</h1>
 <h2 id="&#x9700;&#x6C42;">&#x9700;&#x6C42;</h2>
-<p>&#x5343;&#x4F4D;&#x5206;&#x9694;&#x7B26;&#x662F;&#x5F88;&#x5E38;&#x89C1;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x4F46;&#x662F;&#x8F93;&#x5165;&#x6587;&#x672C;&#x5343;&#x53D8;&#x4E07;&#x5316;&#xFF0C;&#x5982;&#x4F55;&#x624D;&#x80FD;&#x51C6;&#x786E;&#x6DFB;&#x52A0;&#x5343;&#x5206;&#x7B26;&#x5462;&#xFF1F;</p>
-<h2 id="&#x5343;&#x5206;&#x7B26;-&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;-&#x5728;-codepen-&#x4E2D;&#x6253;&#x5F00;">&#x5343;&#x5206;&#x7B26;-&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F; <a href="https://codepen.io/chengnuo/pen/bzMPZG" target="_blank">&#x5728; CodePen &#x4E2D;&#x6253;&#x5F00;</a></h2>
-<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5343;&#x5206;&#x7B26;-&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">miliFormat</span>(<span class="hljs-params">num</span>)</span>{
-
-  <span class="hljs-keyword">return</span> num &amp;&amp; num.toString().replace(<span class="hljs-regexp">/(^|\s)\d+/g</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">s</span>)</span>{
-    <span class="hljs-keyword">return</span> s.replace(<span class="hljs-regexp">/(?=(\d))(?=(\d{3})+$)/g</span>, <span class="hljs-string">&apos;,&apos;</span>)
-  });
-
+<p>&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x8D77;&#x6570;&#x6B21;&#x8BF7;&#x6C42;&#xFF0C;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x7ED3;&#x679C;&#x4F5C;&#x4E3A;&#x4E0B;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
+<h2 id="&#x89E3;&#x51B3;">&#x89E3;&#x51B3;</h2>
+<p>1&#x3001;callback</p>
+<p>2&#x3001;promise</p>
+<h2 id="callback">callback</h2>
+<p>&#x6700;&#x5148;&#x60F3;&#x5230;&#x4E5F;&#x662F;&#x6700;&#x5E38;&#x7528;&#x7684;&#x4FBF;&#x662F;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x7684;&#x5C01;&#x88C5;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> makeAjaxCall = (url, cb) =&gt; {
+    <span class="hljs-comment">// do some ajax</span>
+    <span class="hljs-comment">// callback with result</span>
 }
-<span class="hljs-keyword">let</span> result = miliFormat(<span class="hljs-string">&apos;12345678.22235&apos;</span>);
-<span class="hljs-comment">// &#x8F93;&#x51FA;</span>
-<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;layout&apos;</span>).innerHTML = result;
+
+makeAjaxCall(<span class="hljs-string">&apos;http://url1&apos;</span>, (result) =&gt; {
+    result = <span class="hljs-built_in">JSON</span>.parse(result)
+})
 </code></pre>
+<p>&#x55EF;&#xFF0C;&#x770B;&#x8D77;&#x6765;&#x8FD8;&#x4E0D;&#x9519;&#xFF01;&#x4F46;&#x662F;&#x5F53;&#x6211;&#x4EEC;&#x5C1D;&#x8BD5;&#x5D4C;&#x5957;&#x591A;&#x4E2A;&#x4EFB;&#x52A1;&#x65F6;&#xFF0C;&#x4EE3;&#x7801;&#x770B;&#x8D77;&#x6765;&#x4F1A;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-javascript">makeAjaxCall(<span class="hljs-string">&apos;http://url1&apos;</span>, (result) =&gt; {
+    result = <span class="hljs-built_in">JSON</span>.parse(result)
+
+    makeAjaxCall(<span class="hljs-string">`http://url2?q=<span class="hljs-subst">${result.query}</span>`</span>, (result) =&gt; {
+        result = <span class="hljs-built_in">JSON</span>.parse(result)
+
+        makeAjaxCall(<span class="hljs-string">`http://url3?q=<span class="hljs-subst">${result.query}</span>`</span>, (result) =&gt; {
+            <span class="hljs-comment">// ...</span>
+        })
+    })
+})
+</code></pre>
+<p><code>&#x5730;&#x72F1;&#x5F0F;&#x5D4C;&#x5957;</code>&#xFF0C;&#x867D;&#x7136;&#x89E3;&#x51B3;&#x4E86;&#x95EE;&#x9898;&#x3002;&#x5BFC;&#x81F4;&#x7684;&#x95EE;&#x9898;&#x662F;&#x4EE3;&#x7801;&#x65E0;&#x9650;&#x5FAA;&#x73AF;&#xFF0C;&#x65E2;&#x4E0D;&#x7F8E;&#x89C2;&#x4E5F;&#x4E0D;&#x597D;&#x7EF4;&#x62A4;&#x3002;</p>
+<h2 id="promise">Promise</h2>
+<p>&#x771F;&#x6B63;&#x5E26;&#x6765;&#x9769;&#x547D;&#x6027;&#x6539;&#x53D8;&#x7684;&#x662F; Promise &#x89C4;&#x8303;&#x3002;&#x501F;&#x52A9; Promise&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5B8C;&#x6210;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> makeAjaxCall = (url) =&gt; {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve, reject) =&gt; {
+        <span class="hljs-comment">// do some ajax</span>
+        resolve(result)
+    })
+}
+
+makeAjaxCall(<span class="hljs-string">&apos;http://url1&apos;</span>)
+    .then(<span class="hljs-built_in">JSON</span>.parse)
+    .then((result) =&gt; makeAjaxCall(<span class="hljs-string">`http://url2?q=<span class="hljs-subst">${result.query}</span>`</span>))
+    .then(<span class="hljs-built_in">JSON</span>.parse)
+    .then((result) =&gt; makeAjaxCall(<span class="hljs-string">`http://url3?q=<span class="hljs-subst">${result.query}</span>`</span>))
+</code></pre>
+<h2 id="async-function">async function</h2>
+<p>ES7 &#x4E2D;&#xFF0C;&#x5F15;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x66F4;&#x81EA;&#x7136;&#x7684;&#x7279;&#x6027; async function&#x3002;&#x5229;&#x7528; async function &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> makeAjaxCall = (url) =&gt; {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve, reject) =&gt; {
+        <span class="hljs-comment">// do some ajax</span>
+        resolve(result)
+    })
+}
+
+;(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">let</span> result = <span class="hljs-keyword">await</span> makeAjaxCall(<span class="hljs-string">&apos;http://url1&apos;</span>)
+    result = <span class="hljs-built_in">JSON</span>.parse(result)
+    result = <span class="hljs-keyword">await</span> makeAjaxCall(<span class="hljs-string">`http://url2?q=<span class="hljs-subst">${result.query}</span>`</span>)
+    result = <span class="hljs-built_in">JSON</span>.parse(result)
+    result = <span class="hljs-keyword">await</span> makeAjaxCall(<span class="hljs-string">`http://url3?q=<span class="hljs-subst">${result.query}</span>`</span>)
+})()
+</code></pre>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#x4F5C;&#x8005;&#x5199;&#x7684;&#x592A;&#x597D;&#x4E86;&#xFF0C;&#x6211;&#x8FD9;&#x8FB9;&#x7528;&#x4E86;&#x62FF;&#x6765;&#x4E3B;&#x4E49;&#x3002;&#x540E;&#x9762;&#x4F1A;&#x52A0;&#x4E0A;codepen&#x94FE;&#x63A5;&#x4F5C;&#x4E3A;demo&#x67E5;&#x770B;&#x548C;promise&#x7684;&#x5355;&#x72EC;&#x8BB2;&#x89E3;</p>
 <h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
-<pre><code>https://www.tuicool.com/articles/ArQZfui
-https://idiotwu.me/milli-formatting-digitals-with-regex/
+<pre><code>https://idiotwu.me/going-async-with-javascript/
 </code></pre>
                                 
                                 </section>
@@ -501,14 +547,10 @@ https://idiotwu.me/milli-formatting-digitals-with-regex/
 
             
                 
-                <a href="../part2/README.md" class="navigation navigation-prev " aria-label="Previous page: 面试题 / interviewQuestions">
+                <a href="miliFormat.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 千位分隔符的完整攻略">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="asynchronousProgramming.html" class="navigation navigation-next " aria-label="Next page: JavaScript 异步编程">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -517,7 +559,7 @@ https://idiotwu.me/milli-formatting-digitals-with-regex/
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"千位分隔符的完整攻略","level":"1.9.1","depth":2,"next":{"title":"JavaScript 异步编程","level":"1.9.2","depth":2,"path":"interviewQuestions/asynchronousProgramming.md","ref":"interviewQuestions/asynchronousProgramming.md","articles":[]},"previous":{"title":"面试题 / interviewQuestions","level":"1.9","depth":1,"path":"part2/README.md","ref":"part2/README.md","articles":[{"title":"千位分隔符的完整攻略","level":"1.9.1","depth":2,"path":"interviewQuestions/miliFormat.md","ref":"interviewQuestions/miliFormat.md","articles":[]},{"title":"JavaScript 异步编程","level":"1.9.2","depth":2,"path":"interviewQuestions/asynchronousProgramming.md","ref":"interviewQuestions/asynchronousProgramming.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interviewQuestions/miliFormat.md","mtime":"2019-02-12T11:11:04.821Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-12T11:07:52.310Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript 异步编程","level":"1.9.2","depth":2,"previous":{"title":"千位分隔符的完整攻略","level":"1.9.1","depth":2,"path":"interviewQuestions/miliFormat.md","ref":"interviewQuestions/miliFormat.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interviewQuestions/asynchronousProgramming.md","mtime":"2019-02-12T11:20:01.135Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-12T11:07:52.310Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2,9 +2,9 @@
 
 ## 需求
 
-```
+
 千位分隔符是很常见的需求，但是输入文本千变万化，如何才能准确添加千分符呢？
-```
+
 
 ## 千分符-正则表达式 [在 CodePen 中打开](https://codepen.io/chengnuo/pen/bzMPZG)
 
@@ -26,4 +26,5 @@ document.getElementById('layout').innerHTML = result;
 
 ```
 https://www.tuicool.com/articles/ArQZfui
+https://idiotwu.me/milli-formatting-digitals-with-regex/
 ```
