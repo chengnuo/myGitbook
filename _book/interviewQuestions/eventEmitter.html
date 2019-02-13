@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>JavaScript 异步编程 · GitBook</title>
+        <title>eventEmitter · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="promise.html" />
     
-    
-    <link rel="prev" href="miliFormat.html" />
+    <link rel="prev" href="bubbleSort.html" />
     
 
     </head>
@@ -366,7 +364,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.2" data-path="asynchronousProgramming.html">
+        <li class="chapter " data-level="1.9.2" data-path="asynchronousProgramming.html">
             
                 <a href="asynchronousProgramming.html">
             
@@ -405,7 +403,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.5" data-path="eventEmitter.html">
+        <li class="chapter active" data-level="1.9.5" data-path="eventEmitter.html">
             
                 <a href="eventEmitter.html">
             
@@ -453,7 +451,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >JavaScript 异步编程</a>
+        <a href=".." >eventEmitter</a>
     </h1>
 </div>
 
@@ -468,74 +466,48 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="javascript-&#x5F02;&#x6B65;&#x7F16;&#x7A0B;">JavaScript &#x5F02;&#x6B65;&#x7F16;&#x7A0B;</h1>
+                                <h1 id="eventemitter">eventEmitter</h1>
 <h2 id="&#x9700;&#x6C42;">&#x9700;&#x6C42;</h2>
-<p>&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x8D77;&#x6570;&#x6B21;&#x8BF7;&#x6C42;&#xFF0C;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x7ED3;&#x679C;&#x4F5C;&#x4E3A;&#x4E0B;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
-<h2 id="&#x89E3;&#x51B3;">&#x89E3;&#x51B3;</h2>
-<p>1&#x3001;callback</p>
-<p>2&#x3001;promise</p>
-<h2 id="callback">callback</h2>
-<p>&#x6700;&#x5148;&#x60F3;&#x5230;&#x4E5F;&#x662F;&#x6700;&#x5E38;&#x7528;&#x7684;&#x4FBF;&#x662F;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x7684;&#x5C01;&#x88C5;&#xFF1A;</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> makeAjaxCall = (url, cb) =&gt; {
-    <span class="hljs-comment">// do some ajax</span>
-    <span class="hljs-comment">// callback with result</span>
+<p>Node.js EventEmitter</p>
+<p>Node.js &#x6240;&#x6709;&#x7684;&#x5F02;&#x6B65; I/O &#x64CD;&#x4F5C;&#x5728;&#x5B8C;&#x6210;&#x65F6;&#x90FD;&#x4F1A;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5230;&#x4E8B;&#x4EF6;&#x961F;&#x5217;&#x3002;</p>
+<p>Node.js &#x91CC;&#x9762;&#x7684;&#x8BB8;&#x591A;&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x5206;&#x53D1;&#x4E8B;&#x4EF6;&#xFF1A;&#x4E00;&#x4E2A; net.Server &#x5BF9;&#x8C61;&#x4F1A;&#x5728;&#x6BCF;&#x6B21;&#x6709;&#x65B0;&#x8FDE;&#x63A5;&#x65F6;&#x89E6;&#x53D1;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C; &#x4E00;&#x4E2A; fs.readStream &#x5BF9;&#x8C61;&#x4F1A;&#x5728;&#x6587;&#x4EF6;&#x88AB;&#x6253;&#x5F00;&#x7684;&#x65F6;&#x5019;&#x89E6;&#x53D1;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002; &#x6240;&#x6709;&#x8FD9;&#x4E9B;&#x4EA7;&#x751F;&#x4E8B;&#x4EF6;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x662F; events.EventEmitter &#x7684;&#x5B9E;&#x4F8B;&#x3002;</p>
+<h2 id="eventemitter-&#x5728;-codepen-&#x4E2D;&#x6253;&#x5F00;">EventEmitter <a href="https://codepen.io/chengnuo/pen/NoBrJZ" target="_blank">&#x5728; CodePen &#x4E2D;&#x6253;&#x5F00;</a></h2>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventEmitter</span></span>{
+    <span class="hljs-keyword">constructor</span>() {
+        <span class="hljs-keyword">this</span>.handler = {};
+    }
+    on(eventName, callback){
+        <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.handler){
+            <span class="hljs-keyword">this</span>.handler = {};
+        }
+        <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.handler[eventName]){
+            <span class="hljs-keyword">this</span>.handler[eventName] = [];
+        }
+        <span class="hljs-keyword">this</span>.handler[eventName].push(callback);
+    }
+    emit(eventName, ...arg){
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.handler[eventName]){
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>.handler[eventName].length;i++){
+                <span class="hljs-comment">// this.handler[eventName][i](...arg)</span>
+                <span class="hljs-keyword">this</span>.handler[eventName].forEach(fn =&gt; fn.call(<span class="hljs-keyword">this</span>, ...arg));
+            }
+        }
+    }
 }
 
-makeAjaxCall(<span class="hljs-string">&apos;http://url1&apos;</span>, (result) =&gt; {
-    result = <span class="hljs-built_in">JSON</span>.parse(result)
-})
-</code></pre>
-<p>&#x55EF;&#xFF0C;&#x770B;&#x8D77;&#x6765;&#x8FD8;&#x4E0D;&#x9519;&#xFF01;&#x4F46;&#x662F;&#x5F53;&#x6211;&#x4EEC;&#x5C1D;&#x8BD5;&#x5D4C;&#x5957;&#x591A;&#x4E2A;&#x4EFB;&#x52A1;&#x65F6;&#xFF0C;&#x4EE3;&#x7801;&#x770B;&#x8D77;&#x6765;&#x4F1A;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
-<pre><code class="lang-javascript">makeAjaxCall(<span class="hljs-string">&apos;http://url1&apos;</span>, (result) =&gt; {
-    result = <span class="hljs-built_in">JSON</span>.parse(result)
 
-    makeAjaxCall(<span class="hljs-string">`http://url2?q=<span class="hljs-subst">${result.query}</span>`</span>, (result) =&gt; {
-        result = <span class="hljs-built_in">JSON</span>.parse(result)
-
-        makeAjaxCall(<span class="hljs-string">`http://url3?q=<span class="hljs-subst">${result.query}</span>`</span>, (result) =&gt; {
-            <span class="hljs-comment">// ...</span>
-        })
-    })
-})
-</code></pre>
-<p><code>&#x5730;&#x72F1;&#x5F0F;&#x5D4C;&#x5957;</code>&#xFF0C;&#x867D;&#x7136;&#x89E3;&#x51B3;&#x4E86;&#x95EE;&#x9898;&#x3002;&#x5BFC;&#x81F4;&#x7684;&#x95EE;&#x9898;&#x662F;&#x4EE3;&#x7801;&#x65E0;&#x9650;&#x5FAA;&#x73AF;&#xFF0C;&#x65E2;&#x4E0D;&#x7F8E;&#x89C2;&#x4E5F;&#x4E0D;&#x597D;&#x7EF4;&#x62A4;&#x3002;</p>
-<h2 id="promise">Promise</h2>
-<p>&#x771F;&#x6B63;&#x5E26;&#x6765;&#x9769;&#x547D;&#x6027;&#x6539;&#x53D8;&#x7684;&#x662F; Promise &#x89C4;&#x8303;&#x3002;&#x501F;&#x52A9; Promise&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5B8C;&#x6210;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#xFF1A;</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> makeAjaxCall = (url) =&gt; {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve, reject) =&gt; {
-        <span class="hljs-comment">// do some ajax</span>
-        resolve(result)
-    })
-}
-
-makeAjaxCall(<span class="hljs-string">&apos;http://url1&apos;</span>)
-    .then(<span class="hljs-built_in">JSON</span>.parse)
-    .then((result) =&gt; makeAjaxCall(<span class="hljs-string">`http://url2?q=<span class="hljs-subst">${result.query}</span>`</span>))
-    .then(<span class="hljs-built_in">JSON</span>.parse)
-    .then((result) =&gt; makeAjaxCall(<span class="hljs-string">`http://url3?q=<span class="hljs-subst">${result.query}</span>`</span>))
-</code></pre>
-<h2 id="async-function">async function</h2>
-<p>ES7 &#x4E2D;&#xFF0C;&#x5F15;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x66F4;&#x81EA;&#x7136;&#x7684;&#x7279;&#x6027; async function&#x3002;&#x5229;&#x7528; async function &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#xFF1A;</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> makeAjaxCall = (url) =&gt; {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve, reject) =&gt; {
-        <span class="hljs-comment">// do some ajax</span>
-        resolve(result)
-    })
-}
-
-;(<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-keyword">let</span> result = <span class="hljs-keyword">await</span> makeAjaxCall(<span class="hljs-string">&apos;http://url1&apos;</span>)
-    result = <span class="hljs-built_in">JSON</span>.parse(result)
-    result = <span class="hljs-keyword">await</span> makeAjaxCall(<span class="hljs-string">`http://url2?q=<span class="hljs-subst">${result.query}</span>`</span>)
-    result = <span class="hljs-built_in">JSON</span>.parse(result)
-    result = <span class="hljs-keyword">await</span> makeAjaxCall(<span class="hljs-string">`http://url3?q=<span class="hljs-subst">${result.query}</span>`</span>)
-})()
+<span class="hljs-keyword">let</span> event=<span class="hljs-keyword">new</span> EventEmitter();
+event.on(<span class="hljs-string">&apos;say&apos;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>)</span>{
+   <span class="hljs-built_in">console</span>.log(str);
+});
+event.emit(<span class="hljs-string">&apos;say&apos;</span>,<span class="hljs-string">&apos;hello Jony yu&apos;</span>);
 </code></pre>
 <h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
-<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#x4F5C;&#x8005;&#x5199;&#x7684;&#x592A;&#x597D;&#x4E86;&#xFF0C;&#x6211;&#x8FD9;&#x8FB9;&#x7528;&#x4E86;&#x62FF;&#x6765;&#x4E3B;&#x4E49;&#x3002;&#x540E;&#x9762;&#x4F1A;&#x52A0;&#x4E0A;codepen&#x94FE;&#x63A5;&#x4F5C;&#x4E3A;demo&#x67E5;&#x770B;&#x548C;promise&#x7684;&#x5355;&#x72EC;&#x8BB2;&#x89E3;</p>
+<p>&#x5176;&#x5B9E; eventEmitter &#x5C31;&#x662F;&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x4E00;&#x79CD;</p>
 <h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
-<pre><code>https://idiotwu.me/going-async-with-javascript/
-</code></pre>
+<p><code>
+</code></p>
+
                                 
                                 </section>
                             
@@ -562,14 +534,10 @@ makeAjaxCall(<span class="hljs-string">&apos;http://url1&apos;</span>)
 
             
                 
-                <a href="miliFormat.html" class="navigation navigation-prev " aria-label="Previous page: 千位分隔符的完整攻略">
+                <a href="bubbleSort.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 冒泡排序 / bubbleSort">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="promise.html" class="navigation navigation-next " aria-label="Next page: promise">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -578,7 +546,7 @@ makeAjaxCall(<span class="hljs-string">&apos;http://url1&apos;</span>)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript 异步编程","level":"1.9.2","depth":2,"next":{"title":"promise","level":"1.9.3","depth":2,"path":"interviewQuestions/promise.md","ref":"interviewQuestions/promise.md","articles":[]},"previous":{"title":"千位分隔符的完整攻略","level":"1.9.1","depth":2,"path":"interviewQuestions/miliFormat.md","ref":"interviewQuestions/miliFormat.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interviewQuestions/asynchronousProgramming.md","mtime":"2019-02-12T11:20:01.135Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-12T11:07:52.310Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"eventEmitter","level":"1.9.5","depth":2,"previous":{"title":"冒泡排序 / bubbleSort","level":"1.9.4","depth":2,"path":"interviewQuestions/bubbleSort.md","ref":"interviewQuestions/bubbleSort.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interviewQuestions/eventEmitter.md","mtime":"2019-02-13T09:08:24.239Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-12T11:07:52.310Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

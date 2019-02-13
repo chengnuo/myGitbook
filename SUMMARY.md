@@ -22,3 +22,4 @@
     * [JavaScript 异步编程](interviewQuestions/asynchronousProgramming.md)
     * [promise](interviewQuestions/promise.md)
     * [冒泡排序 / bubbleSort](interviewQuestions/bubbleSort.md)
+    * [eventEmitter](interviewQuestions/eventEmitter.md)
