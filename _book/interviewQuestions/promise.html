@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>正在构建 · GitBook</title>
+        <title>promise · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../part2/README.md" />
+    <link rel="next" href="bubbleSort.html" />
     
     
-    <link rel="prev" href="README.md" />
+    <link rel="prev" href="asynchronousProgramming.html" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="README.md">
+        <li class="chapter " data-level="1.2" data-path="../designPattern/README.md">
             
                 <span>
             
@@ -116,9 +116,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="writing.html">
+        <li class="chapter " data-level="1.2.1" data-path="../designPattern/writing.html">
             
-                <a href="writing.html">
+                <a href="../designPattern/writing.html">
             
                     
                     正在构建
@@ -353,9 +353,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1" data-path="../interviewQuestions/miliFormat.html">
+        <li class="chapter " data-level="1.9.1" data-path="miliFormat.html">
             
-                <a href="../interviewQuestions/miliFormat.html">
+                <a href="miliFormat.html">
             
                     
                     千位分隔符的完整攻略
@@ -366,9 +366,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2" data-path="../interviewQuestions/asynchronousProgramming.html">
+        <li class="chapter " data-level="1.9.2" data-path="asynchronousProgramming.html">
             
-                <a href="../interviewQuestions/asynchronousProgramming.html">
+                <a href="asynchronousProgramming.html">
             
                     
                     JavaScript 异步编程
@@ -379,9 +379,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3" data-path="../interviewQuestions/promise.html">
+        <li class="chapter active" data-level="1.9.3" data-path="promise.html">
             
-                <a href="../interviewQuestions/promise.html">
+                <a href="promise.html">
             
                     
                     promise
@@ -392,9 +392,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.4" data-path="../interviewQuestions/bubbleSort.html">
+        <li class="chapter " data-level="1.9.4" data-path="bubbleSort.html">
             
-                <a href="../interviewQuestions/bubbleSort.html">
+                <a href="bubbleSort.html">
             
                     
                     冒泡排序 / bubbleSort
@@ -440,7 +440,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >正在构建</a>
+        <a href=".." >promise</a>
     </h1>
 </div>
 
@@ -455,9 +455,35 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
-<p>writing</p>
-
+                                <h1 id="promise">promise</h1>
+<h2 id="&#x9700;&#x6C42;">&#x9700;&#x6C42;</h2>
+<p>Promise &#x662F;&#x5F02;&#x6B65;&#x7F16;&#x7A0B;&#x7684;&#x4E00;&#x79CD;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x7528;&#x4E8E;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x7684;&#x6700;&#x7EC8;&#x5B8C;&#x6210;(&#x6216;&#x5931;&#x8D25;)&#x53CA;&#x5176;&#x7ED3;&#x679C;&#x503C;&#x7684;&#x8868;&#x793A;&#xFF0C;&#x6BD4;&#x4F20;&#x7EDF;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x65B9;&#x6848;&#x66F4;&#x52A0;&#x5408;&#x7406;&#x3002;</p>
+<h2 id="&#x63CF;&#x8FF0;">&#x63CF;&#x8FF0;</h2>
+<p>Promise &#x5BF9;&#x8C61;&#x662F;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF08;&#x4EE3;&#x7406;&#x4E00;&#x4E2A;&#x503C;&#xFF09;&#xFF0C;&#x88AB;&#x4EE3;&#x7406;&#x7684;&#x503C;&#x5728;Promise&#x5BF9;&#x8C61;&#x521B;&#x5EFA;&#x65F6;&#x53EF;&#x80FD;&#x662F;&#x672A;&#x77E5;&#x7684;&#x3002;&#x5B83;&#x5141;&#x8BB8;&#x4F60;&#x4E3A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x7684;&#x6210;&#x529F;&#x548C;&#x5931;&#x8D25;&#x5206;&#x522B;&#x7ED1;&#x5B9A;&#x76F8;&#x5E94;&#x7684;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#xFF08;handlers&#xFF09;&#x3002;
+&#x4E00;&#x4E2A; Promise&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x72B6;&#x6001;:</p>
+<p>(1) pending: &#x610F;&#x5473;&#x7740;&#x64CD;&#x4F5C;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x3002;</p>
+<p>(2) fulfilled: &#x610F;&#x5473;&#x7740;&#x64CD;&#x4F5C;&#x6210;&#x529F;&#x3002;</p>
+<p>(3) rejected: &#x610F;&#x5473;&#x7740;&#x64CD;&#x4F5C;&#x5931;&#x8D25;&#x3002;</p>
+<p>pending &#x72B6;&#x6001;&#x7684; Promise &#x5BF9;&#x8C61;&#x53EF;&#x80FD;&#x89E6;&#x53D1;fulfilled &#x72B6;&#x6001;&#x5E76;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x503C;&#x7ED9;&#x76F8;&#x5E94;&#x7684;&#x72B6;&#x6001;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x89E6;&#x53D1;&#x5931;&#x8D25;&#x72B6;&#x6001;&#xFF08;rejected&#xFF09;&#x5E76;&#x4F20;&#x9012;&#x5931;&#x8D25;&#x4FE1;&#x606F;&#x3002;&#x5F53;&#x5176;&#x4E2D;&#x4EFB;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x51FA;&#x73B0;&#x65F6;&#xFF0C;Promise &#x5BF9;&#x8C61;&#x7684;then &#x65B9;&#x6CD5;&#x7ED1;&#x5B9A;&#x7684;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#xFF08;handlers &#xFF09;&#x5C31;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF08;then&#x65B9;&#x6CD5;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;onfulfilled &#x548C; onrejected&#xFF08;&#x53EF;&#x9009;&#x53C2;&#x6570;&#xFF09;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x662F; Function &#x7C7B;&#x578B;&#x3002;</p>
+<h2 id="&#x8BED;&#x6CD5;">&#x8BED;&#x6CD5;</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve, reject) =&gt; {<span class="hljs-comment">/* executor&#x51FD;&#x6570; */</span>
+    <span class="hljs-comment">// ... some code</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-comment">/* &#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x6210;&#x529F; */</span>){
+        resolve(value);
+    } <span class="hljs-keyword">else</span> {
+        reject(error);
+    }
+});
+promise.then((value) =&gt; {
+    <span class="hljs-comment">//success</span>
+}, (error) =&gt; {
+    <span class="hljs-comment">//failure</span>
+})
+</code></pre>
+<h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
+<pre><code>https://www.jianshu.com/p/270fec5b33ce
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+</code></pre>
                                 
                                 </section>
                             
@@ -484,12 +510,12 @@
 
             
                 
-                <a href="README.md" class="navigation navigation-prev " aria-label="Previous page: 设计模式 / designPattern">
+                <a href="asynchronousProgramming.html" class="navigation navigation-prev " aria-label="Previous page: JavaScript 异步编程">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../part2/README.md" class="navigation navigation-next " aria-label="Next page: 力扣 / letcode">
+                <a href="bubbleSort.html" class="navigation navigation-next " aria-label="Next page: 冒泡排序 / bubbleSort">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -500,7 +526,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"正在构建","level":"1.2.1","depth":2,"next":{"title":"力扣 / letcode","level":"1.3","depth":1,"path":"part2/README.md","ref":"part2/README.md","articles":[{"title":"正在构建","level":"1.3.1","depth":2,"path":"part2/letcode.md","ref":"part2/letcode.md","articles":[]}]},"previous":{"title":"设计模式 / designPattern","level":"1.2","depth":1,"path":"designPattern/README.md","ref":"designPattern/README.md","articles":[{"title":"正在构建","level":"1.2.1","depth":2,"path":"designPattern/writing.md","ref":"designPattern/writing.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"designPattern/writing.md","mtime":"2019-01-16T09:03:11.432Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-12T11:07:52.310Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"promise","level":"1.9.3","depth":2,"next":{"title":"冒泡排序 / bubbleSort","level":"1.9.4","depth":2,"path":"interviewQuestions/bubbleSort.md","ref":"interviewQuestions/bubbleSort.md","articles":[]},"previous":{"title":"JavaScript 异步编程","level":"1.9.2","depth":2,"path":"interviewQuestions/asynchronousProgramming.md","ref":"interviewQuestions/asynchronousProgramming.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interviewQuestions/promise.md","mtime":"2019-02-12T11:54:13.851Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-12T11:07:52.310Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

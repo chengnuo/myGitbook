@@ -20,3 +20,5 @@
 * [面试题 / interviewQuestions](part2/README.md)
     * [千位分隔符的完整攻略](interviewQuestions/miliFormat.md)
     * [JavaScript 异步编程](interviewQuestions/asynchronousProgramming.md)
+    * [promise](interviewQuestions/promise.md)
+    * [冒泡排序 / bubbleSort](interviewQuestions/bubbleSort.md)
