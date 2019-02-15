@@ -12,7 +12,7 @@
 
 关于节流的实现，有两种主流的实现方式，一种是使用时间戳，一种是设置定时器。
 
-## EventEmitter [在 CodePen 中打开](https://codepen.io/chengnuo/pen/GzYjee)
+## 节流 [在 CodePen 中打开](https://codepen.io/chengnuo/pen/GzYjee)
 
 ```javascript
 // 节流
