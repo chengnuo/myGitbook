@@ -21,5 +21,6 @@
     * [千位分隔符的完整攻略](interviewQuestions/miliFormat.md)
     * [JavaScript 异步编程](interviewQuestions/asynchronousProgramming.md)
     * [promise](interviewQuestions/promise.md)
-    * [冒泡排序 / bubbleSort](interviewQuestions/bubbleSort.md)
+    * [冒泡排序  bubbleSort](interviewQuestions/bubbleSort.md)
     * [eventEmitter](interviewQuestions/eventEmitter.md)
+    * [节流 throttle](interviewQuestions/throttle.md)
