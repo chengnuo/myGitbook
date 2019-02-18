@@ -24,3 +24,4 @@
     * [冒泡排序  bubbleSort](interviewQuestions/bubbleSort.md)
     * [eventEmitter](interviewQuestions/eventEmitter.md)
     * [节流 throttle](interviewQuestions/throttle.md)
+    * [防抖 debounce](interviewQuestions/debounce.md)
