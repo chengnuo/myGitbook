@@ -25,3 +25,4 @@
     * [eventEmitter](interviewQuestions/eventEmitter.md)
     * [节流 throttle](interviewQuestions/throttle.md)
     * [防抖 debounce](interviewQuestions/debounce.md)
+    * [深入理解 requestAnimationFrame](interviewQuestions/requestAnimationFrame.md)
