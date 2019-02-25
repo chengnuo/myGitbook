@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>防抖 debounce · GitBook</title>
+        <title>重复输出字符串 repeat a string · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="requestAnimationFrame.html" />
     
-    
-    <link rel="prev" href="throttle.html" />
+    <link rel="prev" href="requestAnimationFrame.html" />
     
 
     </head>
@@ -431,7 +429,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.7" data-path="debounce.html">
+        <li class="chapter " data-level="1.9.7" data-path="debounce.html">
             
                 <a href="debounce.html">
             
@@ -457,7 +455,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.9" data-path="repeatString.html">
+        <li class="chapter active" data-level="1.9.9" data-path="repeatString.html">
             
                 <a href="repeatString.html">
             
@@ -505,7 +503,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >防抖 debounce</a>
+        <a href=".." >重复输出字符串 repeat a string</a>
     </h1>
 </div>
 
@@ -520,38 +518,30 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x9632;&#x6296;">&#x9632;&#x6296;</h1>
+                                <h1 id="javascript&#x5B9E;&#x73B0;-&#x91CD;&#x590D;&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x4E32;-repeat-a-string">JavaScript&#x5B9E;&#x73B0;-&#x91CD;&#x590D;&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x4E32; repeat a string</h1>
 <h2 id="&#x9700;&#x6C42;">&#x9700;&#x6C42;</h2>
-<p>&#x9632;&#x6296;&#x7684;&#x539F;&#x7406;&#x5C31;&#x662F;&#xFF1A;&#x4F60;&#x5C3D;&#x7BA1;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4E00;&#x5B9A;&#x5728;&#x4E8B;&#x4EF6;&#x505C;&#x6B62;&#x89E6;&#x53D1; n &#x79D2;&#x540E;&#x624D;&#x6267;&#x884C;&#x3002;</p>
-<p>&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5982;&#x679C;&#x4F60;&#x5728;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x7684; n &#x79D2;&#x5185;&#x53C8;&#x89E6;&#x53D1;&#x4E86;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x90A3;&#x6211;&#x5C31;&#x4EE5;&#x65B0;&#x7684;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x7684;&#x65F6;&#x95F4;&#x4E3A;&#x51C6;&#xFF0C;&#x5728;&#x6B64;&#x65F6;&#x95F4; n &#x79D2;&#x540E;&#x624D;&#x6267;&#x884C;&#x3002;</p>
-<p>&#x603B;&#x4E4B;&#xFF0C;&#x5C31;&#x662F;&#x8981;&#x7B49;&#x4F60;&#x89E6;&#x53D1;&#x5B8C;&#x4E8B;&#x4EF6; n &#x79D2;&#x5185;&#x4E0D;&#x518D;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#xFF0C;&#x6211;&#x624D;&#x6267;&#x884C;&#xFF0C;&#x771F;&#x662F;&#x4EFB;&#x6027;&#x5450;!</p>
-<h2 id="&#x9632;&#x6296;-&#x5728;-codepen-&#x4E2D;&#x6253;&#x5F00;">&#x9632;&#x6296; <a href="https://codepen.io/chengnuo/pen/PVXKaR" target="_blank">&#x5728; CodePen &#x4E2D;&#x6253;&#x5F00;</a></h2>
-<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> count = <span class="hljs-number">1</span>;
-<span class="hljs-keyword">var</span> container = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;container&apos;</span>);
+<p>&#x91CD;&#x590D;&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x4E32;</p>
+<p>&#xFF08;&#x91CD;&#x8981;&#x7684;&#x4E8B;&#x60C5;&#x8BF4;3&#x904D;&#xFF09;</p>
+<p>&#x91CD;&#x590D;&#x4E00;&#x4E2A;&#x6307;&#x5B9A;&#x7684;&#x5B57;&#x7B26;&#x4E32; num&#x6B21;&#xFF0C;&#x5982;&#x679C;num&#x662F;&#x4E00;&#x4E2A;&#x8D1F;&#x6570;&#x5219;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<h2 id="&#x91CD;&#x590D;&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x4E32;-&#x5728;-codepen-&#x4E2D;&#x6253;&#x5F00;">&#x91CD;&#x590D;&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x4E32; <a href="https://codepen.io/chengnuo/pen/ywBjGO" target="_blank">&#x5728; CodePen &#x4E2D;&#x6253;&#x5F00;</a></h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> repeatString = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">str, num</span>)</span>{
+            <span class="hljs-keyword">let</span> result = <span class="hljs-string">&apos;&apos;</span>;
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUserAction</span>(<span class="hljs-params"></span>) </span>{
-    container.innerHTML = count++;
-};
+            <span class="hljs-keyword">if</span>(str == <span class="hljs-string">&apos;&apos;</span>){
+                result = <span class="hljs-string">&apos;&apos;</span>;
+            }<span class="hljs-keyword">else</span>{
+                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>; i&lt;num; i++){
+                    result += str;
+                }
 
+            }
+            <span class="hljs-keyword">return</span> result;
+        }
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span>(<span class="hljs-params">func, wait, immediate</span>)</span>{
-  <span class="hljs-keyword">var</span> timeout;
-  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>;
-    <span class="hljs-keyword">let</span> args = <span class="hljs-built_in">arguments</span>
-    clearTimeout(timeout);
-    timeout = setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-      func.apply(self, args)
-    }, wait)
-  }
-};
-
-
-container.onmousemove = debounce(getUserAction, <span class="hljs-number">300</span>, <span class="hljs-literal">true</span>);
+        <span class="hljs-built_in">console</span>.log( repeatString(<span class="hljs-string">&apos;abc&apos;</span>, <span class="hljs-number">3</span>) );
 </code></pre>
 <h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
-<pre><code>https://github.com/mqyqingfeng/Blog/issues/22
-https://github.com/component/debounce/blob/f4afbd34e3e15be33d2f261b3ec67ecddaf4a4f6/index.js
+<pre><code>https://github.com/mqyqingfeng/Blog/issues/26
 </code></pre>
                                 
                                 </section>
@@ -579,14 +569,10 @@ https://github.com/component/debounce/blob/f4afbd34e3e15be33d2f261b3ec67ecddaf4a
 
             
                 
-                <a href="throttle.html" class="navigation navigation-prev " aria-label="Previous page: 节流 throttle">
+                <a href="requestAnimationFrame.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 深入理解 requestAnimationFrame">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="requestAnimationFrame.html" class="navigation navigation-next " aria-label="Next page: 深入理解 requestAnimationFrame">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -595,7 +581,7 @@ https://github.com/component/debounce/blob/f4afbd34e3e15be33d2f261b3ec67ecddaf4a
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"防抖 debounce","level":"1.9.7","depth":2,"next":{"title":"深入理解 requestAnimationFrame","level":"1.9.8","depth":2,"path":"interviewQuestions/requestAnimationFrame.md","ref":"interviewQuestions/requestAnimationFrame.md","articles":[]},"previous":{"title":"节流 throttle","level":"1.9.6","depth":2,"path":"interviewQuestions/throttle.md","ref":"interviewQuestions/throttle.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interviewQuestions/debounce.md","mtime":"2019-02-18T04:32:29.571Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-25T08:55:10.486Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"重复输出字符串 repeat a string","level":"1.9.9","depth":2,"previous":{"title":"深入理解 requestAnimationFrame","level":"1.9.8","depth":2,"path":"interviewQuestions/requestAnimationFrame.md","ref":"interviewQuestions/requestAnimationFrame.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interviewQuestions/repeatString.md","mtime":"2019-02-25T09:01:00.379Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-25T08:55:10.486Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

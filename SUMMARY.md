@@ -26,3 +26,4 @@
     * [节流 throttle](interviewQuestions/throttle.md)
     * [防抖 debounce](interviewQuestions/debounce.md)
     * [深入理解 requestAnimationFrame](interviewQuestions/requestAnimationFrame.md)
+    * [重复输出字符串 repeat a string](interviewQuestions/repeatString.md)
