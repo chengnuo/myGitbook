@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>promise · GitBook</title>
+        <title>css布局 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="bubbleSort.html" />
     
-    
-    <link rel="prev" href="asynchronousProgramming.html" />
+    <link rel="prev" href="repeatString.html" />
     
 
     </head>
@@ -379,7 +377,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.3" data-path="promise.html">
+        <li class="chapter " data-level="1.9.3" data-path="promise.html">
             
                 <a href="promise.html">
             
@@ -470,7 +468,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.10" data-path="cssLayout.html">
+        <li class="chapter active" data-level="1.9.10" data-path="cssLayout.html">
             
                 <a href="cssLayout.html">
             
@@ -518,7 +516,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >promise</a>
+        <a href=".." >css布局</a>
     </h1>
 </div>
 
@@ -533,35 +531,193 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="promise">promise</h1>
+                                <h1 id="css&#x5E03;&#x5C40;">css&#x5E03;&#x5C40;</h1>
 <h2 id="&#x9700;&#x6C42;">&#x9700;&#x6C42;</h2>
-<p>Promise &#x662F;&#x5F02;&#x6B65;&#x7F16;&#x7A0B;&#x7684;&#x4E00;&#x79CD;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x7528;&#x4E8E;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x7684;&#x6700;&#x7EC8;&#x5B8C;&#x6210;(&#x6216;&#x5931;&#x8D25;)&#x53CA;&#x5176;&#x7ED3;&#x679C;&#x503C;&#x7684;&#x8868;&#x793A;&#xFF0C;&#x6BD4;&#x4F20;&#x7EDF;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x65B9;&#x6848;&#x66F4;&#x52A0;&#x5408;&#x7406;&#x3002;</p>
-<h2 id="&#x63CF;&#x8FF0;">&#x63CF;&#x8FF0;</h2>
-<p>Promise &#x5BF9;&#x8C61;&#x662F;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF08;&#x4EE3;&#x7406;&#x4E00;&#x4E2A;&#x503C;&#xFF09;&#xFF0C;&#x88AB;&#x4EE3;&#x7406;&#x7684;&#x503C;&#x5728;Promise&#x5BF9;&#x8C61;&#x521B;&#x5EFA;&#x65F6;&#x53EF;&#x80FD;&#x662F;&#x672A;&#x77E5;&#x7684;&#x3002;&#x5B83;&#x5141;&#x8BB8;&#x4F60;&#x4E3A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x7684;&#x6210;&#x529F;&#x548C;&#x5931;&#x8D25;&#x5206;&#x522B;&#x7ED1;&#x5B9A;&#x76F8;&#x5E94;&#x7684;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#xFF08;handlers&#xFF09;&#x3002;
-&#x4E00;&#x4E2A; Promise&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x72B6;&#x6001;:</p>
-<p>(1) pending: &#x610F;&#x5473;&#x7740;&#x64CD;&#x4F5C;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x3002;</p>
-<p>(2) fulfilled: &#x610F;&#x5473;&#x7740;&#x64CD;&#x4F5C;&#x6210;&#x529F;&#x3002;</p>
-<p>(3) rejected: &#x610F;&#x5473;&#x7740;&#x64CD;&#x4F5C;&#x5931;&#x8D25;&#x3002;</p>
-<p>pending &#x72B6;&#x6001;&#x7684; Promise &#x5BF9;&#x8C61;&#x53EF;&#x80FD;&#x89E6;&#x53D1;fulfilled &#x72B6;&#x6001;&#x5E76;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x503C;&#x7ED9;&#x76F8;&#x5E94;&#x7684;&#x72B6;&#x6001;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x89E6;&#x53D1;&#x5931;&#x8D25;&#x72B6;&#x6001;&#xFF08;rejected&#xFF09;&#x5E76;&#x4F20;&#x9012;&#x5931;&#x8D25;&#x4FE1;&#x606F;&#x3002;&#x5F53;&#x5176;&#x4E2D;&#x4EFB;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x51FA;&#x73B0;&#x65F6;&#xFF0C;Promise &#x5BF9;&#x8C61;&#x7684;then &#x65B9;&#x6CD5;&#x7ED1;&#x5B9A;&#x7684;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#xFF08;handlers &#xFF09;&#x5C31;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF08;then&#x65B9;&#x6CD5;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;onfulfilled &#x548C; onrejected&#xFF08;&#x53EF;&#x9009;&#x53C2;&#x6570;&#xFF09;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x662F; Function &#x7C7B;&#x578B;&#x3002;</p>
-<h2 id="&#x8BED;&#x6CD5;">&#x8BED;&#x6CD5;</h2>
-<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve, reject) =&gt; {<span class="hljs-comment">/* executor&#x51FD;&#x6570; */</span>
-    <span class="hljs-comment">// ... some code</span>
-    <span class="hljs-keyword">if</span> (<span class="hljs-comment">/* &#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x6210;&#x529F; */</span>){
-        resolve(value);
-    } <span class="hljs-keyword">else</span> {
-        reject(error);
-    }
-});
-promise.then((value) =&gt; {
-    <span class="hljs-comment">//success</span>
-}, (error) =&gt; {
-    <span class="hljs-comment">//failure</span>
-})
+<p>css &#x5E03;&#x5C40;&#x65B9;&#x5F0F;</p>
+<pre><code>&#x4E00;&#x680F;&#x5E03;&#x5C40;
+&#x53CC;&#x680F;&#x5E03;&#x5C40;
+&#x4E09;&#x680F;&#x5E03;&#x5C40;
+&#x5723;&#x676F;&#x5E03;&#x5C40;
+&#x53CC;&#x98DE;&#x7FFC;&#x5E03;&#x5C40;
+</code></pre><h2 id="&#x4E00;&#x680F;&#x5E03;&#x5C40;-&#x5728;-codepen-&#x4E2D;&#x6253;&#x5F00;">&#x4E00;&#x680F;&#x5E03;&#x5C40; <a href="https://codepen.io/chengnuo/pen/pBZNwe" target="_blank">&#x5728; CodePen &#x4E2D;&#x6253;&#x5F00;</a></h2>
+<pre><code class="lang-css">&lt;div class=&apos;layout&apos;&gt;
+  &lt;div&gt;&#x4E00;&#x680F;&#x5E03;&#x5C40;&lt;/div&gt;
+&lt;/div&gt;
+
+
+.layout{
+  width: 1000px;
+  height: 500px;
+  margin: 0 auto;
+  background: #999;
+}
+</code></pre>
+<pre><code>&#x4E00;&#x680F;&#x5E03;&#x5C40;&#x4E3B;&#x8981;&#x601D;&#x8DEF;&#x662F;
+1&#xFF0C;&#x8BBE;&#x7F6E;&#x5BBD;&#x5EA6; width: 1000px;
+2&#xFF0C;&#x8BBE;&#x7F6E; margin: 0 auto;
+</code></pre><h2 id="&#x53CC;&#x680F;&#x5E03;&#x5C40;-&#x5728;-codepen-&#x4E2D;&#x6253;&#x5F00;">&#x53CC;&#x680F;&#x5E03;&#x5C40; <a href="https://codepen.io/chengnuo/pen/PgBjOj" target="_blank">&#x5728; CodePen &#x4E2D;&#x6253;&#x5F00;</a></h2>
+<pre><code class="lang-css">&lt;div class=&quot;layout&quot;&gt;
+    &lt;span class=&quot;p1&quot;&gt;
+        float
+    &lt;/span&gt;
+    &lt;div class=&quot;p2&quot;&gt;
+        &#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;&#x5F88;&#x957F;&#x7684;&#x6587;&#x5B57;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;layout layout2&quot;&gt;
+    &lt;span&gt;&#x5199;&#x51E0;&#x4E2A;&#x5B57;&lt;/span&gt;
+    &lt;span class=&quot;p1&quot;&gt;
+        float
+    &lt;/span&gt;
+    &lt;span class=&quot;p1&quot;&gt;
+        float
+    &lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;layout&quot; style=&quot;height:200px;background:blue;&quot;&gt;
+&lt;/div&gt;
+
+.layout{
+    background:red;
+    width:400px;
+    margin:20px;
+}
+.p1{
+    background:green;
+    float:left;
+    width:200px;
+    height:50px;
+}
+.layout2::after{
+    content: &apos;aaa&apos;;
+    clear:both;
+    display: block;
+    visibility: hidden;
+    height:0;
+}
+</code></pre>
+<h2 id="&#x4E09;&#x680F;&#x5E03;&#x5C40;-&#x5728;-codepen-&#x4E2D;&#x6253;&#x5F00;">&#x4E09;&#x680F;&#x5E03;&#x5C40; <a href="https://codepen.io/chengnuo/pen/BEPZPJ" target="_blank">&#x5728; CodePen &#x4E2D;&#x6253;&#x5F00;</a></h2>
+<pre><code class="lang-css">
+&lt;div class=&quot;layout&quot;&gt;
+    &lt;div class=&quot;left&quot;&gt;
+        &#x5DE6;
+    &lt;/div&gt;
+    &lt;div class=&quot;right&quot;&gt;
+        &#x53F3;
+    &lt;/div&gt;
+    &lt;div class=&quot;middle&quot;&gt;
+        &#x4E2D;&#x95F4;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+.layout{
+    width:800px;
+    height:200px;
+}
+.left{
+    background:red;
+    /* float:left; */
+    /* height:100%; */
+    width:200px;
+    position: absolute;
+    height:200px;
+}
+.right{
+    background:blue;
+    float:right;
+    width:200px;
+    height:100%;
+}
+.middle{
+    margin-left:200px;
+    margin-right:200px;
+}
+</code></pre>
+<h2 id="&#x5723;&#x676F;&#x5E03;&#x5C40;-&#x5728;-codepen-&#x4E2D;&#x6253;&#x5F00;">&#x5723;&#x676F;&#x5E03;&#x5C40; <a href="https://codepen.io/chengnuo/pen/LvBxgN" target="_blank">&#x5728; CodePen &#x4E2D;&#x6253;&#x5F00;</a></h2>
+<pre><code class="lang-css">&lt;div class=&quot;layout&quot;&gt;
+    &lt;div class=&quot;main col&quot;&gt;Main-css&#x5723;&#x676F;&lt;/div&gt;
+    &lt;div class=&quot;left col&quot;&gt;Left&lt;/div&gt;
+    &lt;div class=&quot;right col&quot;&gt;Right&lt;/div&gt;
+&lt;/div&gt;
+
+/* &#x4E24;&#x8FB9;&#x5B9A;&#x5BBD;&#xFF0C;&#x4E2D;&#x95F4;&#x81EA;&#x9002;&#x7528; */
+body,html,.layout{
+    height: 100%;
+    padding:0;
+    margin: 0;
+}
+.col{
+    float: left;   /* &#x4E09;&#x4E2A;col&#x90FD;&#x8BBE;&#x7F6E;float: left,&#x4E3A;&#x4E86;&#x628A;left&#x548C;right&#x5B9A;&#x4F4D;&#x5230;&#x5DE6;&#x53F3;&#x90E8;&#x5206; */
+    position:relative;
+}
+ /*&#x7236;&#x5143;&#x7D20;&#x7A7A;&#x51FA;&#x5DE6;&#x53F3;&#x680F;&#x4F4D;&#x5B50;: &#x56E0;&#x4E3A;&#x4E0A;&#x4E00;&#x6B65;&#x4E2D;&#xFF0C;&#x5DE6;&#x53F3;&#x680F;&#x5B9A;&#x4F4D;&#x6210;&#x529F;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x4E2D;&#x95F4;&#x680F;&#x7684;&#x5185;&#x5BB9;&#x4F1A;&#x88AB;&#x906E;&#x76D6;&#x4F4F;*/
+.layout{
+    padding:0 200px 0 100px;
+}
+/*&#x5DE6;&#x8FB9;&#x680F;*/
+.left{
+    left:-100px;
+    width: 100px;
+    height:100%;
+    margin-left: -100%;
+    background: #ff69b4;
+}
+/*&#x4E2D;&#x95F4;&#x680F;*/
+.main{
+    width:100%;
+    height: 100%;
+    background: #659;
+}
+/*&#x53F3;&#x8FB9;&#x680F;*/
+.right{
+    right:-200px;
+    width:200px;
+    height:100%;
+    margin-left: -200px;
+    background: #ff69b4;
+}
+</code></pre>
+<h2 id="&#x53CC;&#x98DE;&#x7FFC;&#x5E03;&#x5C40;-&#x5728;-codepen-&#x4E2D;&#x6253;&#x5F00;">&#x53CC;&#x98DE;&#x7FFC;&#x5E03;&#x5C40; <a href="https://codepen.io/chengnuo/pen/VNBPop" target="_blank">&#x5728; CodePen &#x4E2D;&#x6253;&#x5F00;</a></h2>
+<pre><code class="lang-css">&lt;div class=&quot;layout&quot;&gt;
+    &lt;div class=&quot;main col &quot;&gt;
+        &lt;div class=&quot;main_inner&quot;&gt;Main&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;left col &quot;&gt;Left&lt;/div&gt;
+    &lt;div class=&quot;right col &quot;&gt;Right&lt;/div&gt;
+&lt;/div&gt;
+
+
+body,html,.layout{
+    height: 100%;
+    padding:0;
+    margin: 0;
+}
+.col{
+    float: left; /* &#x628A;left&#x548C;right&#x5B9A;&#x4F4D;&#x5230;&#x5DE6;&#x53F3;&#x90E8;&#x5206; */
+}
+.main{
+    width:100%;
+    height:100%;
+    background: #659;
+}
+.main_inner{   /* &#x5904;&#x7406;&#x4E2D;&#x95F4;&#x680F;&#x7684;&#x5185;&#x5BB9;&#x88AB;&#x906E;&#x76D6;&#x95EE;&#x9898; */
+    margin:0 200px 0 100px;
+}
+.left{
+    width: 100px;
+    height: 100%;
+    margin-left: -100%;
+    background: #ff69b4;
+}
+.right{
+    height:100%;
+    width:200px;
+    margin-left: -200px;
+    background: #ff69b4;
+}
 </code></pre>
 <h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
-<pre><code>https://www.jianshu.com/p/270fec5b33ce
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-</code></pre>
+
                                 
                                 </section>
                             
@@ -588,14 +744,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
             
                 
-                <a href="asynchronousProgramming.html" class="navigation navigation-prev " aria-label="Previous page: JavaScript 异步编程">
+                <a href="repeatString.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 重复输出字符串 repeat a string">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="bubbleSort.html" class="navigation navigation-next " aria-label="Next page: 冒泡排序  bubbleSort">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -604,7 +756,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"promise","level":"1.9.3","depth":2,"next":{"title":"冒泡排序  bubbleSort","level":"1.9.4","depth":2,"path":"interviewQuestions/bubbleSort.md","ref":"interviewQuestions/bubbleSort.md","articles":[]},"previous":{"title":"JavaScript 异步编程","level":"1.9.2","depth":2,"path":"interviewQuestions/asynchronousProgramming.md","ref":"interviewQuestions/asynchronousProgramming.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interviewQuestions/promise.md","mtime":"2019-02-12T11:54:13.851Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-22T09:15:13.976Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"css布局","level":"1.9.10","depth":2,"previous":{"title":"重复输出字符串 repeat a string","level":"1.9.9","depth":2,"path":"interviewQuestions/repeatString.md","ref":"interviewQuestions/repeatString.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interviewQuestions/cssLayout.md","mtime":"2019-04-22T12:17:17.956Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-22T09:15:13.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
