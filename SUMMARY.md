@@ -16,7 +16,7 @@
     * [正在构建](part2/letcode.md)
 * [打包工具](part2/README.md)
     * [别名 webpack alias](webpack/alias.md)
-    * [rollup（正在构建）](part2/letcode.md)
+    * [rollup（正在构建 测试）](part2/letcode.md)
 * [面试题 / interviewQuestions](part2/README.md)
     * [千位分隔符的完整攻略](interviewQuestions/miliFormat.md)
     * [异步编程 JavaScript](interviewQuestions/asynchronousProgramming.md)
