@@ -19,7 +19,7 @@
     * [rollup（正在构建）](part2/letcode.md)
 * [面试题 / interviewQuestions](part2/README.md)
     * [千位分隔符的完整攻略](interviewQuestions/miliFormat.md)
-    * [JavaScript 异步编程](interviewQuestions/asynchronousProgramming.md)
+    * [异步编程 JavaScript](interviewQuestions/asynchronousProgramming.md)
     * [promise](interviewQuestions/promise.md)
     * [冒泡排序  bubbleSort](interviewQuestions/bubbleSort.md)
     * [eventEmitter](interviewQuestions/eventEmitter.md)
