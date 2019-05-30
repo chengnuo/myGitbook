@@ -22,6 +22,8 @@
     * [sentry](tool/sentry.md)
     * [docker](tool/docker.md)
     * [kubernetes](tool/kubernetes.md)
+    * [feHelper](tool/feHelper.md)
+    * [webstorm](tool/webstorm.md)
 * [面试题 / interviewQuestions](part2/README.md)
     * [千位分隔符的完整攻略](interviewQuestions/miliFormat.md)
     * [异步编程 JavaScript](interviewQuestions/asynchronousProgramming.md)
