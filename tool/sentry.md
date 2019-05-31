@@ -11,7 +11,7 @@ Open-source error tracking that helps developers monitor and fix crashes in real
 
 ## logo
 
-![Jenkins](/assets/images/sentryLogo.png)
+![sentry](/assets/images/sentryLogo.png)
 
 
 ## 同行
