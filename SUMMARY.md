@@ -14,6 +14,8 @@
     * [正在构建](part2/letcode.md)
 * [mysql](part2/README.md)
     * [正在构建](part2/letcode.md)
+* [前端库](part2/README.md)
+    * [前端库 / frontEndLibrary](frontEndLibrary/summary.md)
 * [打包工具](part2/README.md)
     * [别名 webpack alias](webpack/alias.md)
     * [rollup（正在构建 测试）](part2/letcode.md)
