@@ -31,6 +31,8 @@
     * [ggfwzs](tool/ggfwzs.md)
     * [switchHosts](tool/switchHosts.md)
     * [magicanrest](tool/magicanrest.md)
+    * [charles](tool/charles.md)
+    * [fiddler](tool/fiddler.md)
 * [面试题 / interviewQuestions](part2/README.md)
     * [千位分隔符的完整攻略](interviewQuestions/miliFormat.md)
     * [异步编程 JavaScript](interviewQuestions/asynchronousProgramming.md)
