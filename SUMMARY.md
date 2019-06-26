@@ -2,18 +2,21 @@
 
 * [介绍 / Introduction](README.md)
 
-* [设计模式 / designPattern](designPattern/README.md)
-    * [正在构建](designPattern/writing.md)
-* [力扣 / letcode](part2/README.md)
-    * [正在构建](part2/letcode.md)
-* [http](part2/README.md)
-    * [正在构建](part2/letcode.md)
-* [docker](part2/README.md)
-    * [正在构建](part2/letcode.md)
-* [jenkins](part2/README.md)
-    * [正在构建](part2/letcode.md)
-* [mysql](part2/README.md)
-    * [正在构建](part2/letcode.md)
+<!-- * [设计模式 / designPattern](designPattern/README.md) -->
+    <!-- * [正在构建](designPattern/writing.md) -->
+<!-- * [力扣 / letcode](part2/README.md) -->
+    <!-- * [正在构建](part2/letcode.md) -->
+<!-- * [http](part2/README.md) -->
+    <!-- * [正在构建](part2/letcode.md) -->
+<!-- * [docker](part2/README.md) -->
+    <!-- * [正在构建](part2/letcode.md) -->
+<!-- * [jenkins](part2/README.md) -->
+    <!-- * [正在构建](part2/letcode.md) -->
+<!-- * [mysql](part2/README.md) -->
+    <!-- * [正在构建](part2/letcode.md) -->
+
+* [文章](blog/README.md)
+    * [微信h5支付](blog/wxpay.md)
 * [前端库](part2/README.md)
     * [前端库 / frontEndLibrary](frontEndLibrary/summary.md)
 * [打包工具](part2/README.md)
