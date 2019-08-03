@@ -17,6 +17,7 @@
 
 * [文章](blog/README.md)
     * [微信h5支付](blog/wxpay.md)
+    * [支付宝wap支付](blog/alipay.md)
 * [前端库](part2/README.md)
     * [前端库 / frontEndLibrary](frontEndLibrary/summary.md)
 * [打包工具](part2/README.md)
