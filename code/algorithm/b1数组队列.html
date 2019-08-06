@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>数组队列</title>
+</head>
+<body>
+<script>
+	// 队列 - https://www.jianshu.com/p/95a00e993ecd
+	let baseQueue = function (capacity){
+		this.queue = capacity ? [capacity] : []; // 队列数组
+		this.front = 0; // 队头
+		this.rear = 0; // 队尾
+		this.queueLength = 0; // 队列长度
+		let self = this;
+		// 销毁队列
+		this.destroyQueue = () =>{
+			self.queue.split(0, self.queueLength)
+		}
+		// 清空队列
+		this.destroyQueue = () =>{
+			this.front = 0; // 队头
+			this.rear = 0; // 队尾
+			this.queueLength = 0; // 队列长度
+			this.queue = [];
+		}
+		// 判断队列是否为空
+		this.isEmpty = () =>{
+			return this.queue.length === 0; // 队列长度
+		}
+		// 判断队列是否为满
+		this.isFull = () =>{
+			return this.queue.length === this.queueLength; // 队列长度
+		}
+		// 获取队列长度
+		this.length = () =>{
+			return this.queue.length
+		}
+		// 入队
+		this.enQueue = (element) =>{
+			this.queue.push(element);
+		}
+		// 出队
+		this.deQueue = () =>{
+			this.queue.shift();
+		}
+		// 遍历队列
+		this.each = () =>{
+			let result = '';
+			for(let i=0 ; i<this.queue.length; i++){
+				let item = this.queue[i]
+				if(this.queue.length == (i+1)){
+					result += item;
+				}else {
+					result += item+',';
+				}
+			}
+			return result;
+		}
+	}
+
+	let ins = new baseQueue(); // 测试用例, chrome console
+	ins.enQueue(1); // 入队
+	ins.enQueue(2); // 入队
+	// console.log( ins.queue );
+	ins.deQueue(); // 出队
+	// console.log( ins.queue );
+
+
+	// console.log(ins.each())
+	// console.log('ins', ins)
+	// ins.destroyQueue(); // 清空队列
+	// console.log('ins', ins)
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>排队系统</title>
+</head>
+<body>
+<script>
+	// 循环队列-排队系统 - https://www.cnblogs.com/Counterrr/p/10621334.html
+	// 函数的闭包，立即执行
+	var autoPerson = (function () {
+		// 定义vip用户和普通用户
+		var vipNum = 0;
+		var norNum = 0;
+		return function () {
+			// 随机产生vip或者普通用户
+			var randomNum = Math.random();
+			if ( randomNum > 0.5) {
+				vipNum++;
+				return "V" + vipNum;
+			}
+			else {
+				norNum++;
+				return "N" + norNum;
+			}
+		}
+	})();
+	// 定义一个排队数组，长度为6
+	var personArr = [];
+	var perLen = 6;
+	for( var i = 0; i < perLen; i++) {
+		// 每循环一次掉用函数vipFirst函数一次，传入参数，随机产生vip或者普通用户
+		vipFirst(autoPerson());
+	}
+	// 对数组进行整合，如果当前传入的客户是VIP的话
+	function vipFirst(person) {
+		if ( person[0] == "V") {
+			// 那么遍历现存的数组
+			for( var i = 0; i < personArr.length; i++) {
+				// 并且找出数组里普通用户所在的位置
+				if ( personArr[i][0] == "N") {
+					// splice数组方法，找到当前位置上的普通用户，0代表不删除，并在这个普通用户之前插入这位vip用户
+					personArr.splice(i, 0, person);
+					// 注意这边插入后，需返回，否则可能引起无限循环，重复插入，导致浏览器奔溃
+					return;
+				}
+			}
+		}
+		// 如果当前的用户不是VIP用户的话，那么就按普通先到的用户排列
+		personArr.push(person);
+	}
+	// 打印当前队列
+	console.log("现存队列:" + personArr);
+	// 设置一个计时器，每5秒执行一次
+	var timer = setInterval(listMove, 5000);
+
+	function listMove() {
+		// 删除数组第一位，并将这个值返回给firstPer
+		var firstPer = personArr.shift();
+		// 打印出来当前叫号的客户
+		console.log("叫号:" + firstPer);
+
+		// 随机再来一个用户
+		var newper = autoPerson();
+		// 打印当前新来的客户编号
+		console.log("新人:" + newper);
+		// 将新来的客户如果是vip用户，就插入到普通用户前
+		vipFirst(newper);
+		// 再次打印当前的队列
+		console.log("现存队形:" + personArr);
+	}
+
+
+</script>
+</body>
+</html>
