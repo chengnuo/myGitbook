@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>b5环形队列2</title>
+</head>
+<body>
+<script>
+
+	class CircleArray {
+		constructor(obj){
+			// https://blog.csdn.net/Carry_bluebuff/article/details/92439297
+			this.maxSize = obj.maxSize; // 表示数组的最大容量
+			console.log('this.maxSize', this.maxSize)
+			//front 变量的含义做一个调整： front 就指向队列的第一个元素, 也就是说 arr[front] 就是队列的第一个元素
+			//front 的初始值 = 0
+			this.front = 0; // 表示数组的最大容量
+			//rear 变量的含义做一个调整：rear 指向队列的最后一个元素的后一个位置. 因为希望空出一个空间做为约定.
+			//rear 的初始值 = 0
+			this.rear = 0; // 队列尾
+			this.arr = []; // 该数据用于存放数据, 模拟队列
+		}
+		circleArray(arrMaxSize) {
+			this.maxSize = arrMaxSize;
+			// this.arr.length = maxSize;
+		}
+
+		// 判断队列是否满
+		isFull() {
+			return (this.rear + 1) % this.maxSize == this.front;
+		}
+
+		// 判断队列是否为空
+		isEmpty() {
+			return this.rear == this.front;
+		}
+
+		// 添加数据到队列
+		addQueue(n) {
+			// 判断队列是否满
+			if (this.isFull()) {
+				console.log("队列满，不能加入数据~");
+				return;
+			}
+			//直接将数据加入
+			this.arr[this.rear] = n;
+			//将 rear 后移, 这里必须考虑取模
+			this.rear = (this.rear + 1) % this.maxSize;
+		}
+
+		// 获取队列的数据, 出队列
+		getQueue() {
+			// 判断队列是否空
+			if (this.isEmpty()) {
+				// 通过抛出异常
+				console.log("队列空，不能取数据");
+			}
+			// 这里需要分析出 front是指向队列的第一个元素
+			// 1. 先把 front 对应的值保留到一个临时变量
+			// 2. 将 front 后移, 考虑取模
+			// 3. 将临时保存的变量返回
+			let value = this.arr[this.front];
+			this.front = (this.front + 1) % this.maxSize;
+			return value;
+		}
+
+		// 显示队列的所有数据
+		showQueue() {
+			// 遍历
+			if (this.isEmpty()) {
+				console.log("队列空的，没有数据~~");
+				return;
+			}
+			// 思路：从front开始遍历，遍历多少个元素
+			// 动脑筋
+			for (let i = this.front; i < this.front + this.size(); i++) {
+				console.log("arr[%d]=%d\n", i % this.maxSize, this.arr[i % this.maxSize]);
+			}
+		}
+		// 求出当前队列有效数据的个数
+		size() {
+			// rear = 2
+			// front = 1
+			// maxSize = 3
+			return (this.rear + this.maxSize - this.front) % this.maxSize;
+		}
+		// 显示队列的头数据， 注意不是取出数据
+		headQueue() {
+			// 判断
+			if (this.isEmpty()) {
+				console.log("队列空的，没有数据~~");
+			}
+			return this.arr[this.front];
+		}
+	}
+
+	let queue = new CircleArray({
+		maxSize: 4,
+	}); //说明设置4, 其队列的有效数据最大是3
+	// console.log('queue', queue)
+
+	queue.addQueue(0)
+	queue.addQueue(1)
+	queue.addQueue(2)
+	queue.addQueue(3)
+
+	queue.getQueue();
+	queue.addQueue(4)
+	// queue.addQueue(5)
+
+	queue.showQueue()
+
+
+</script>
+</body>
+</html>
