@@ -7,10 +7,10 @@
 <script>
 
 	class CircleArray {
-		constructor(obj){
+		constructor(){
 			// https://blog.csdn.net/Carry_bluebuff/article/details/92439297
-			this.maxSize = obj.maxSize; // 表示数组的最大容量
-			console.log('this.maxSize', this.maxSize)
+			this.maxSize = 0; // 表示数组的最大容量
+			// console.log('this.maxSize', this.maxSize)
 			//front 变量的含义做一个调整： front 就指向队列的第一个元素, 也就是说 arr[front] 就是队列的第一个元素
 			//front 的初始值 = 0
 			this.front = 0; // 表示数组的最大容量
@@ -26,6 +26,9 @@
 
 		// 判断队列是否满
 		isFull() {
+			console.log(`this.rear`, this.rear)
+			console.log(`this.maxSize`, this.maxSize)
+			console.log(`this.front`, this.front)
 			return (this.rear + 1) % this.maxSize == this.front;
 		}
 
@@ -93,22 +96,24 @@
 		}
 	}
 
-	let queue = new CircleArray({
-		maxSize: 4,
-	}); //说明设置4, 其队列的有效数据最大是3
+	let queue = new CircleArray(); //说明设置4, 其队列的有效数据最大是3
+	queue.circleArray(4);
 	// console.log('queue', queue)
 
+	// console.log(queue.isEmpty())
+	// console.log('queue', queue)
 	queue.addQueue(0)
 	queue.addQueue(1)
 	queue.addQueue(2)
 	queue.addQueue(3)
+	//
+	// queue.getQueue();
+	// queue.addQueue(4)
+	// // queue.addQueue(5)
+	//
+	// queue.showQueue()
 
-	queue.getQueue();
-	queue.addQueue(4)
-	// queue.addQueue(5)
-
-	queue.showQueue()
-
+	console.log('queue', queue)
 
 </script>
 </body>
