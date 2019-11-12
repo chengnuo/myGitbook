@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>100003笛卡尔积电商中sku规格属性算法</title>
+</head>
+<body>
+	<script>
+		// 参考 https://blog.csdn.net/qq_37162688/article/details/94717272
+
+
+		// 产品属性
+		let list = [
+			{
+				name: '存储容量',
+				checkList: [
+					{
+						name: '8g',
+						id: 111325,
+						attributeName: '存储容量',
+					},
+					{
+						name: '16g',
+						id: 111327,
+						attributeName: '存储容量',
+					}],
+			},
+			{
+				name: '产品类型',
+				checkList: [
+					{
+						name: 'iphone',
+						id: 111303,
+						attributeName: '产品类型',
+					},
+					{
+						name: 'vivo',
+						id: 111305,
+						attributeName: '产品类型',
+					}],
+			},
+			{
+				name: '产品颜色',
+				checkList: [
+					{
+						name: '金',
+						id: 111303,
+						attributeName: '产品颜色',
+					},
+					{
+						name: '灰',
+						id: 111305,
+						attributeName: '产品颜色',
+					}],
+			},
+			{
+				name: '网络类型',
+				checkList: [{
+					name: '套餐一',
+					id: 111281,
+					attributeName: '网络类型',
+				},
+				{
+					name: '套餐五',
+					id: 111281,
+					attributeName: '网络类型',
+				}],
+			},
+		]
+
+		function arrp(arr){
+			//编辑原数组格式
+			if(arr[0].checkList){
+				arr=arr.map((item)=>{
+					return item=item.checkList.map((checkListItem)=>{
+						console.log('checkListItem', checkListItem)
+						return {
+							...checkListItem,
+							[checkListItem.attributeName]: checkListItem.name,
+							isUse: true,
+						}
+					})
+				})
+			}
+			if(arr.length == 1){
+				//最终合并成一个
+				return arr[0];
+			}else{	//有两个子数组就合并
+				let arrySon = [];
+
+				//将组合放到新数组中
+				arr[0].forEach((item,index)=>{
+					arr[1].forEach((item1,index1)=>{
+						arrySon.push([].concat(arr[0][index],arr[1][index1]));
+					})
+				})
+				// 新数组并入原数组,去除合并的前两个数组
+				console.log('arrySon', arrySon)
+				arr[0] = arrySon;
+				arr.splice(1,1);
+				// 递归
+				return arrp(arr);
+			}
+		}
+
+		arrp(list)
+	</script>
+</body>
+</html>

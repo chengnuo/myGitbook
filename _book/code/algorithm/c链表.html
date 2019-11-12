@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>链表</title>
+</head>
+<body>
+	<script>
+		function LinkedList() {
+			var Node = function (element) { // {1}
+				this.element = element;
+				this.next = null;
+			};
+			this.length = 0; // {2}
+			this.head = new Node('head'); // {3}
+
+			/**
+			 * {
+							"element": "head",
+								"next": {
+									"element": "第一个节点",
+									"next": {
+										"element": "第二个节点",
+										"next": null
+									}
+								}
+							}
+			 * 第一次
+			 * @current head
+			 * @node 第一个节点
+			 * 第二次
+			 * @current 第一个节点
+			 * @node 第二个节点
+			 * 第三次
+			 * @current 第二个节点
+			 * @node null
+			 */
+			this.append = function (element) {
+				let node = new Node(element);
+				let current = {};
+
+				if(this.head !== null){
+					current = this.head; // 缓存头节点
+					while(current.next){ // 递归下级节点。
+						current = current.next; // {"element":"head","next":{"element":"第一个节点","next":{"element":"第二个节点","next":null}}}
+					}
+					current.next = node; // 赋值
+				}
+				this.length++;
+			};
+			this.insert = function(position, element){
+				//检查越界值
+				if (position >= 0 && position <= this.length){ //{1}
+					let node = new Node(element),
+							current = this.head,
+							previous,
+							index = 0;
+					if (position === 0){ //在第一个位置添加 node.next = current; //{2}
+						node.next = current; //{2}
+						this.head = node;
+					} else {
+						while (index++ < position){ //{3}
+							previous = current;
+							current = current.next;
+						}
+						node.next = current; //{4}
+						previous.next = node; //{5}
+					}
+					this.length++; //更新列表的长度
+					return true;
+				} else {
+					return false; //{6}
+				}
+			};
+
+			this.removeAt = function (position) {
+				//检查越界值
+				if (position > -1 && position < this.length){ // {1}
+					let current = this.head, // {2}
+							previous, // {3}
+							index = 0; // {4}
+					//移除第一项
+					if (position === 0){ // {5}
+						this.head = current.next;
+					} else {
+
+						while (index++ < position){ // {6}
+							previous = current;     // {7}
+							current = current.next; // {8}
+						}
+						//将previous与current的下一项链接起来:跳过current，从而移除它
+						previous.next = current.next; // {9}
+					}
+					this.length--; // {10}
+					return current.element;
+				} else {
+					return null; // {11}
+				}
+			};
+			this.remove = function (element) {
+				let index = this.indexOf(element);
+
+				return this.removeAt(index)
+
+			};
+
+			this.indexOf = function (element) {
+				let current = this.head;
+				let index = 0;
+				while(current){
+					if(current.element === element){
+						return index;
+					}
+					index++
+					current = current.next;
+				}
+				return -1;
+			}
+			this.isEmpty = function () {
+				return this.length === 0;
+			};
+			this.size = function () {
+				return this.length;
+			};
+			this.toString = function () {
+				let current = this.getHead(),
+						string = '';
+
+				while (current) {
+					string += current.element + (current.next ? ', ' : '');
+					current = current.next;
+				}
+				return string;
+			};
+			this.print = function () {
+				console.log(this.toString());
+			};
+			this.getHead = function () {
+				return this.head
+			}
+		}
+
+
+		let linkedList = new LinkedList();
+		linkedList.append('第一个节点')
+		linkedList.append('第二个节点')
+		linkedList.append('第三个节点')
+		linkedList.print()
+
+		// linkedList.remove()
+		linkedList.insert(0, '测试')
+		linkedList.print()
+
+	</script>
+</body>
+</html>

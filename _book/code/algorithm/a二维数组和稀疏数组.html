@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>二维数组和稀疏数组</title>
+</head>
+<body>
+	<div class="div1">
+	</div>
+	<div class="div2">
+	</div>
+	<script>
+		// 二维数组
+		const twoDimensionalArray = [
+			[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], // 第一行
+			[ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 ], // 第二行，第三个
+			[ 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0 ], // 第三行，第四个
+			[ 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0 ], // 第四行
+			[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], // 第五行
+			[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], // 第六行
+			[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], // 第七行
+			[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], // 第八行
+			[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], // 第九行
+			[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], // 第十行
+			[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], // 第十一行
+		];
+		// 转换后的稀疏数组
+		/**
+		 * 序号 row col val
+		 * 0    11  11  2
+		 * 1	1	2	1
+		 * 2	2	3	2
+		 */
+		// 稀疏数组(Sparse array)
+		const sparseArray = [
+			[11, 11, 3],
+			[1, 2, 1],
+			[2, 3, 2],
+			[3, 4, 4],
+		];
+
+		// 二维数组转稀疏数组
+		let toSparseArray = [];
+		let count = 0;
+		for(let i = 0; i<twoDimensionalArray.length; i++){
+			let item = twoDimensionalArray[i]
+
+			for(let j=0; j<item.length;j++){
+				let childrenItem = item[j]
+
+				if(childrenItem!=0){
+					count++;
+					if(!toSparseArray[count]){
+						toSparseArray[0] = []
+						toSparseArray[count] = []
+					}
+					toSparseArray[0][0] = 11;
+					toSparseArray[0][1] = 11;
+					toSparseArray[0][2] = count;
+					toSparseArray[count][0] = i;
+					toSparseArray[count][1] = j;
+					toSparseArray[count][2] = childrenItem;
+				}
+			}
+		}
+		console.log('toSparseArray', JSON.stringify(toSparseArray));
+		document.querySelectorAll('.div1')[0].innerHTML = `稀疏数组：${JSON.stringify(toSparseArray)}`
+		// [
+		// 	[
+		// 		11, 11, 3
+		// 	],
+		// 	[
+		// 		1, 2, 1
+		// 	],
+		// 	[
+		// 		2, 3, 2
+		// 	],
+		// 	[
+		// 		3, 4, 4
+		// 	]
+		// ]
+
+
+		// 稀疏数组转二维数组
+		let toTwoDimensionalArray = [];
+
+		for(let i=0; i<11; i++){
+			toTwoDimensionalArray[i] = [];
+			for(let j=0; j<11; j++) {
+				toTwoDimensionalArray[i][j] = 0;
+			}
+		}
+
+		for(let i=1; i<sparseArray.length;i++){
+			console.log('i', i)
+			toTwoDimensionalArray[sparseArray[i][0]][sparseArray[i][1]] = sparseArray[i][2];
+		}
+
+		console.log('toTwoDimensionalArray', toTwoDimensionalArray);
+		document.querySelectorAll('.div2')[0].innerHTML = `二维数组：${JSON.stringify(toTwoDimensionalArray)}`
+		// [
+		// 	[0,0,0,0,0,0,0,0,0,0,0],
+		// 	[0,0,1,0,0,0,0,0,0,0,0],
+		// 	[0,0,0,2,0,0,0,0,0,0,0],
+		// 	[0,0,0,0,4,0,0,0,0,0,0],
+		// 	[0,0,0,0,0,0,0,0,0,0,0],
+		// 	[0,0,0,0,0,0,0,0,0,0,0],
+		// 	[0,0,0,0,0,0,0,0,0,0,0],
+		// 	[0,0,0,0,0,0,0,0,0,0,0],
+		// 	[0,0,0,0,0,0,0,0,0,0,0],
+		// 	[0,0,0,0,0,0,0,0,0,0,0],
+		// 	[0,0,0,0,0,0,0,0,0,0,0]
+		// ]
+
+
+
+
+	</script>
+</body>
+</html>

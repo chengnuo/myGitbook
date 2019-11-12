@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript笛卡尔积超简单实现算法示例</title>
+</head>
+<body>
+	<script>
+		/* https://www.jb51.net/article/144703.htm */
+		function cartesianProductOf() {
+			return Array.prototype.reduce.call(arguments,    function(a, b) {
+				var ret = [];
+				a.forEach(function(a) {
+					b.forEach(function(b) {
+						ret.push(a.concat([b]));
+					});
+				});
+				return ret;
+			}, [[]]);
+		}
+		console.log(cartesianProductOf(['1','3'],['a','b']))
+	</script>
+</body>
+</html>
