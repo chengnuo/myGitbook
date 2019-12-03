@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>字符串匹配-KMP匹配法</title>
+</head>
+<body>
+	<script>
+		/**
+		 * 字符串匹配分2种
+		 * 1，暴力匹配法。
+		 * 2，KMP匹配法。
+		 */
+
+		function kmpSearch(str1, str2, next) {
+
+			for(let i = 0, j = 0; i < str1.length; i++) {
+				while( j > 0 && str1.charAt(i) != str2.charAt(j)) {
+					j = next[j-1];
+				}
+				if(str1.charAt(i) == str2.charAt(j)) {
+					j++;
+				}
+				if(j == str2.length) {
+					return i - j + 1;
+				}
+			}
+			return  -1;
+		}
+
+		function kmpNext(dest) {
+			let next = [dest.length]
+			next[0] = 0;
+			for(let i = 1, j = 0; i < dest.length; i++) {
+				while(j > 0 && dest.charAt(i) != dest.charAt(j)) {
+					j = next[j-1];
+				}
+				if(dest.charAt(i) == dest.charAt(j)) {
+					j++;
+				}
+				next[i] = j;
+			}
+			return next;
+		}
+
+		let str1 = "BBC ABCDAB ABCDABCDABDE";
+		let str2 = "ABCDABD";
+		//String str2 = "BBC";
+
+		let next = kmpNext(str2); //[0, 1, 2, 0]
+		console.log("next=" + next);
+
+		let index = kmpSearch(str1, str2, next);
+		console.log("index=" + index); // 15
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>字符串匹配-暴力匹配法</title>
+</head>
+<body>
+	<script>
+		/**
+		 * 暴力匹配法
+		 */
+
+		let str1="BBC ABCDAB ABCDABCDABDE"
+		let str2="ABCDABD"
+
+
+		function myIndexOf(str1, str2, n){
+			//n为起始位置
+			let s1Len = str1.length;
+			let s2Len = str2.length;
+
+			let i = 0;
+			let j = 0;
+
+			while (i<s1Len && j<s2Len){
+				debugger
+				if(str1[i]===str2[j]){
+					i++
+					j++
+				}else {
+					i = i - (j - 1); // str1:BBC [ABCDAB ]ABCDABCDABDE str2:ABCDABD 因为D不匹配空格，所以从B又开始匹配
+					j = 0;
+				}
+			}
+
+			//判断是否匹配成功
+			if(j == s2Len) { // str2的长度和j相同，就等于找到了。
+				return i - j; // 获取具体的位置下标
+			} else {
+				return -1;
+			}
+		}
+
+		console.log( myIndexOf(str1, str2) )
+
+
+
+	</script>
+</body>
+</html>
