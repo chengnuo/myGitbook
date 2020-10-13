@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts.min.js"></script>
+  <title>echart</title>
+  <style>
+    .chart {
+      width: 600px;
+      height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>图表测试</h2>
+  <div id="app">
+  </div>
+  <ul>控件</ul>
+  <script type="text/javascript">
+    // setTimeout(() => {
+    //   // 插入十万条数据
+    //   const total = 100000
+    //   // 一次插入 20 条，如果觉得性能不好就减少
+    //   const once = 20
+    //   // 渲染数据总共需要几次
+    //   const loopCount = total / once
+    //   let countOfRender = 0
+    //   let ul = document.querySelector("ul");
+
+    //   function add() {
+    //     // 优化性能，插入不会造成回流
+    //     const fragment = document.createDocumentFragment();
+    //     for (let i = 0; i < once; i++) {
+    //       const li = document.createElement("li");
+    //       li.innerText = Math.floor(Math.random() *
+    //         total);
+    //       fragment.appendChild(li);
+    //     }
+    //     ul.appendChild(fragment);
+    //     countOfRender += 1;
+    //     loop();
+    //   }
+
+    //   function loop() {
+    //     if (countOfRender < loopCount) {
+    //       window.requestAnimationFrame(add);
+    //     }
+    //   }
+    //   loop();
+    // }, 0);
+
+    // init();
+
+    // function init() {
+
+    //   //每行最多显示4个图表，并自动计算高度
+    //   var num = getRound(100, 500);
+    //   console.log(`num`, num)
+    //   var app = document.getElementById("app");
+    //   var xdata = ["第1次", "第2次", "第3次", "第4次", "第5次", "第6次"];
+
+    //   //通过配置xAxi和yAxis的gridIndex  series的xAxisIndex和yAxisIndex 来配套格子
+    //   for (var i = 0; i < num; i++) {
+
+    //     //创建用于存放图表的div节点
+    //     var el = document.createElement('div');
+    //     el.id = "main" + i;
+    //     el.className = "chart";
+    //     app.appendChild(el);
+
+    //     // 基于准备好的dom，初始化echarts实例
+    //     var myChart = echarts.init(document.getElementById("main" + i));
+
+    //     // 指定图表的配置项和数据
+    //     var option = {
+    //       title: {
+    //         text: 'mark' + i,
+    //         left: 'center'
+    //       },
+    //       xAxis: {
+    //         type: "category",
+    //         data: xdata
+    //       },
+    //       yAxis: {
+    //         type: "value",
+    //         splitLine: {
+    //           show: false
+    //         }
+    //       },
+    //       series: {
+    //         name: "名次",
+    //         type: "line",
+    //         data: getData(6),
+    //         label: {
+    //           show: true
+    //         }
+    //       }
+    //     };
+
+    //     // 使用刚指定的配置项和数据显示图表。
+    //     myChart.setOption(option);
+
+    //   }
+    // }
+
+
+    setTimeout(() => {
+      // 插入十万条数据
+      const total = 1000
+      // 一次插入 20 条，如果觉得性能不好就减少
+      let once = 20
+      // 渲染数据总共需要几次
+      const loopCount = total / once
+      let countOfRender = 0
+      
+      let countIdArray = []
+      let countI = 0;
+      
+      let ul = document.querySelector("ul");
+      
+      
+
+      function add() {
+        // 优化性能，插入不会造成回流
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < once; i++) {
+          const li = document.createElement("li");
+          // li.innerText = Math.floor(Math.random() *
+          //   total);
+          countI++
+          li.id = "main" + (countI);
+          li.className = "mainadd";
+          fragment.appendChild(li);
+        }
+        ul.appendChild(fragment);
+        countOfRender += 1;
+        // console.log(`countI`, countI)
+        
+
+        for (let i = 0; i < once; i++) {
+          console.log(`countI`, countI-once+i+1)
+          
+          var myChart = echarts.init(document.getElementById("main" + (countI-once+i+1)));
+          var xdata = ["第1次", "第2次", "第3次", "第4次", "第5次", "第6次"];
+
+          // 指定图表的配置项和数据
+          var option = {
+            title: {
+              text: 'mark' + (countI-once+i+1),
+              left: 'center'
+            },
+            xAxis: {
+              type: "category",
+              data: xdata
+            },
+            yAxis: {
+              type: "value",
+              splitLine: {
+                show: false
+              }
+            },
+            series: {
+              name: "名次",
+              type: "line",
+              data: getData(6),
+              label: {
+                show: true
+              }
+            }
+          };
+
+          // 使用刚指定的配置项和数据显示图表。
+          myChart.setOption(option);
+        }
+        loop();
+      }
+
+      function loop() {
+        if (countOfRender < loopCount) {
+          window.requestAnimationFrame(add);
+        }
+      }
+      loop();
+    }, 0);
+
+    //获取min-max范围内的随机整数
+    function getRound(min, max) {
+      return parseInt(Math.random() * (max - min + 1) + min);
+    }
+
+    function getData(num) {
+      var list = [];
+      for (var i = 0; i < num; i++) {
+        list.push(getRound(1, 100));
+      }
+      return list;
+    }
+  </script>
+</body>
+
+</html>
